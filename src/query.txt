@@ -1,0 +1,24 @@
+CREATE TABLE data.customer (
+  Customer_ID INT NOT NULL,
+  Name VARCHAR(30) NOT NULL,
+  DateOfBirth DATE NOT NULL,
+  Citizen VARCHAR(12) NOT NULL,
+  PRIMARY KEY (Customer_ID)
+) ENGINE=InnoDB;
+
+CREATE TABLE data.account (
+  Account_ID VARCHAR(20) NOT NULL,
+  Bank VARCHAR(30) NOT NULL,
+  Customer_ID INT NOT NULL,
+  PRIMARY KEY (Account_ID),
+  FOREIGN KEY (Customer_ID) REFERENCES data.customer(Customer_ID)
+) ENGINE=InnoDB;
+
+CREATE TABLE data.card (
+  Card_ID VARCHAR(16) NOT NULL,
+  Pin INT NOT NULL,    
+  Account_ID VARCHAR(20) NOT NULL,
+  Amount DOUBLE NOT NULL,
+  PRIMARY KEY (Card_ID),
+  FOREIGN KEY (Account_ID) REFERENCES data.account(Account_ID)
+) ENGINE=InnoDB;
