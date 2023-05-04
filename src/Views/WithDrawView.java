@@ -106,7 +106,7 @@ public class WithDrawView extends JFrame implements ActionListener {
                         card.setAmount(card.getAmount()-amount);
                         CardController controller = new CardController();
                         try {
-                            controller.withdraw(card);
+                            controller.changeAmount(card);
                         } catch (ClassNotFoundException ex) {
                             throw new RuntimeException(ex);
                         } catch (SQLException ex) {

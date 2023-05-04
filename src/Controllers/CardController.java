@@ -17,10 +17,7 @@ public class CardController {
         model.changePassword(card);
     }
 
-    public void withdraw(Card card) throws ClassNotFoundException, SQLException {
-        CardModel model = new CardModel();
-        model.withdraw(card);
-    }
+
 
     public void changeAmount(Card card) throws ClassNotFoundException, SQLException {
         CardModel model = new CardModel();

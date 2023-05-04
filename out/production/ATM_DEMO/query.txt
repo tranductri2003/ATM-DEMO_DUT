@@ -15,8 +15,8 @@ CREATE TABLE data.account (
 ) ENGINE=InnoDB;
 
 CREATE TABLE data.card (
-  Card_ID VARCHAR(16) NOT NULL,
-  Pin INT NOT NULL,    
+  Card_ID VARCHAR(19) NOT NULL,
+  Pin INT VARCHAR(6) NOT NULL,
   Account_ID VARCHAR(20) NOT NULL,
   Amount DOUBLE NOT NULL,
   PRIMARY KEY (Card_ID),
