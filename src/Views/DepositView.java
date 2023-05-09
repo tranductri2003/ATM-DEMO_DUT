@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class DepositView extends JFrame implements ActionListener {
 
-    private JLabel lb1;
+    private JLabel lb1,lb2;
     private JTextField txtNum;
     private JButton btnOK,btnBack;
     private JPanel pn,pn0,pn1,pn3;
@@ -25,38 +25,50 @@ public class DepositView extends JFrame implements ActionListener {
     }
 
     public void GUI(){
+    	Color color = new Color(45, 191, 151);
         lb1=new JLabel("INPUT AMOUNT TO DEPOSIT");
-
+        lb1.setHorizontalAlignment(JLabel.CENTER);
+        lb1.setVerticalAlignment(JLabel.CENTER);
+        lb2 = new JLabel("Amount of money must be a multiple of 10 thousand VNĐ");
+        lb2.setForeground(Color.red);
+        lb2.setFont(new Font("Serif", Font.BOLD, 12));
+        lb2.setHorizontalAlignment(JLabel.CENTER);
+        lb2.setVerticalAlignment(JLabel.CENTER);
+        
         txtNum=new JTextField(5);
         txtNum.setBounds(0,0,200,15);
         txtNum.setForeground(Color.BLUE);
         txtNum.setFont(new Font("Arial", Font.PLAIN, 16));
         btnOK=new JButton("OK");
-        btnOK.setBackground(Color.black);
+        btnOK.setBackground(color);
         btnOK.setForeground(Color.white);
         btnBack=new JButton("BACK");
-        btnBack.setBackground(Color.black);
+        btnBack.setBackground(color);
         btnBack.setForeground(Color.white);
         btnOK.addActionListener(this);
         btnBack.addActionListener(this);
 
-        pn=new JPanel(new GridLayout(5,1));
-        pn0=new JPanel(new FlowLayout());
+        pn=new JPanel(new GridLayout(6,1));
+        pn0=new JPanel(new GridLayout(2,1));
         pn0.add(lb1);
+        pn0.add(lb2);
 
         pn1=new JPanel(new GridLayout(1,3));
         pn1.add(new JLabel());
         pn1.add(txtNum);
         pn1.add(new JLabel());
-
-        pn3=new JPanel(new FlowLayout());
+        
+        FlowLayout layout = new FlowLayout();
+        layout.setHgap(10);
+        layout.setVgap(10);
+        pn3=new JPanel(layout);
         pn3.add(btnOK);
         pn3.add(btnBack);
 
         pn.add(new Label());
         pn.add(pn0);
         pn.add(pn1);
-
+        pn.add(new Label());
         pn.add(pn3);
 
         setSize(500,300);
