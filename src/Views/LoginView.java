@@ -23,7 +23,7 @@ public class LoginView extends JFrame implements ActionListener {
     }
 
     public void GUI(){
-        lb1=new JLabel("HE THONG NGAN HANG");
+        lb1=new JLabel("XIN CHAO QUY KHACH DEN VOI ATM CUA BIDV");
         lb2=new JLabel("CARD NUMBER: ");
         lb3=new JLabel("CARD PIN: ");
         txtCard=new JTextField(5);
@@ -32,10 +32,11 @@ public class LoginView extends JFrame implements ActionListener {
         txtPass.setBounds(0,0,200,15);
         txtPass.setEchoChar('*');
         btnOK=new JButton("OK");
-        btnOK.setBackground(Color.black);
+        Color color = new Color(45, 191, 151);
+        btnOK.setBackground(color);
         btnOK.setForeground(Color.white);
         btnReset=new JButton("RESET");
-        btnReset.setBackground(Color.black);
+        btnReset.setBackground(color);
         btnReset.setForeground(Color.white);
         btnOK.addActionListener(this);
         btnReset.addActionListener(this);
@@ -43,7 +44,9 @@ public class LoginView extends JFrame implements ActionListener {
         pn=new JPanel(new GridLayout(5,1));
         pn0=new JPanel(new FlowLayout());
         pn0.add(lb1);
-
+        pn0.setBackground(color);
+        lb1.setForeground(Color.white);
+        
         pn1=new JPanel(new GridLayout(1,2));
 
         pn1.add(lb2);
@@ -60,14 +63,16 @@ public class LoginView extends JFrame implements ActionListener {
         pn3.add(btnOK);
         pn3.add(btnReset);
 
-        pn.add(new Label());
+        //pn.add(new Label());
         pn.add(pn0);
         pn.add(pn1);
         pn.add(pn2);
         pn.add(pn3);
-
+        
         setSize(500,300);
         add(pn);
+        
+        pn.setBackground(color);
         show();
 
 

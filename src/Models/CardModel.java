@@ -4,10 +4,8 @@ import java.sql.*;
 
 public class CardModel {
     public Card getCard(String CardNumber,String Password) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://127.0.0.1:3306/data";
-        Connection con= DriverManager.getConnection(url,"root","");
-        Statement stmt =con.createStatement();
+    	Connection con = JDBC.getConnection("jdbc:mySQL://localhost:3306/data");
+		Statement stmt = con.createStatement();
         String query = String.format("SELECT * FROM card WHERE Card_ID=%s AND Pin=%s",CardNumber,Password);
         ResultSet res =stmt.executeQuery(query);
 

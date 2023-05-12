@@ -26,9 +26,11 @@ public class MainView  extends JFrame implements ActionListener {
         GUI(customer);
     }
     public void GUI(Customer customer){
-        lblName=new JLabel(customer.getName());
+        lblName=new JLabel("Welcome "+customer.getName());
         lblName.setFont(new Font("Serif", Font.BOLD, 20));
-        lblName.setForeground(Color.BLUE);
+        lblName.setForeground(Color.white);
+        lblName.setHorizontalAlignment(JLabel.CENTER);
+        lblName.setVerticalAlignment(JLabel.CENTER);
 
         btnWithDraw =new JButton("WithDraw");
         btnWithDraw.setPreferredSize(new Dimension(180, 50));
@@ -42,18 +44,20 @@ public class MainView  extends JFrame implements ActionListener {
         btnView.setPreferredSize(new Dimension(180, 50));
         btnLogOut=new JButton("Log out");
         btnLogOut.setPreferredSize(new Dimension(180, 50));
-
-        btnWithDraw.setBackground(Color.black);
+        
+        Color color = new Color(45, 191, 151);
+        
+        btnWithDraw.setBackground(color);
         btnWithDraw.setForeground(Color.white);
-        btnShow.setBackground(Color.black);
+        btnShow.setBackground(color);
         btnShow.setForeground(Color.white);
-        btnPinChange.setBackground(Color.black);
+        btnPinChange.setBackground(color);
         btnPinChange.setForeground(Color.white);
-        btnDeposit.setBackground(Color.black);
+        btnDeposit.setBackground(color);
         btnDeposit.setForeground(Color.white);
-        btnView.setBackground(Color.black);
+        btnView.setBackground(color);
         btnView.setForeground(Color.white);
-        btnLogOut.setBackground(Color.black);
+        btnLogOut.setBackground(color);
         btnLogOut.setForeground(Color.white);
 
         btnWithDraw.addActionListener(this);
@@ -64,11 +68,12 @@ public class MainView  extends JFrame implements ActionListener {
         btnLogOut.addActionListener(this);
 
 
-        pn=new JPanel(new GridLayout(5,1));
+        pn=new JPanel(new GridLayout(7,1));
+        
 
-
-        pn1=new JPanel(new GridLayout(1,1));
-        pn1.add(lblName);
+        pn1=new JPanel(new BorderLayout());
+        pn1.add(lblName,BorderLayout.CENTER);
+        pn1.setBackground(color);
 
         pn2=new JPanel(new BorderLayout());
         pn2.add(btnWithDraw,BorderLayout.WEST);
@@ -81,13 +86,25 @@ public class MainView  extends JFrame implements ActionListener {
         pn4=new JPanel(new BorderLayout());
         pn4.add(btnPinChange,BorderLayout.WEST);
         pn4.add(btnLogOut,BorderLayout.EAST);
-
+        
+        pn2.setBackground(Color.white);
+        pn3.setBackground(Color.white);
+        pn4.setBackground(Color.white);
+        
+        pn.setBackground(Color.white);
         pn.add(pn1);
-        pn.add(new JLabel());
+        
+        JLabel option = new JLabel("Please, choose your option!");
+        option.setHorizontalAlignment(JLabel.CENTER);
+        option.setVerticalAlignment(JLabel.CENTER);
+        pn.add(option);
         pn.add(pn2);
+        pn.add(new Panel());
         pn.add(pn3);
+        pn.add(new Panel());
         pn.add(pn4);
         add(pn);
+//        setLocationRelativeTo(null);
         setSize(500,300);
         show();
 
@@ -127,7 +144,15 @@ public class MainView  extends JFrame implements ActionListener {
         }
         else if (e.getSource()==btnWithDraw)
         {
-            WithDrawView view = new WithDrawView("With Draw", card);
+            try {
+				WithDrawOptionView view = new WithDrawOptionView("With Draw Option", card);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             dispose();
         }
         else if (e.getSource()==btnDeposit)
